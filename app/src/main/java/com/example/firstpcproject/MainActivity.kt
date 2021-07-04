@@ -22,9 +22,11 @@ class MainActivity : AppCompatActivity() {
         /*button.setOnClickListener{
             text.text = "현자타임."
         }*/
+        var year:Int=0
+
         button.setOnClickListener {
             val today = GregorianCalendar()
-            val year: Int = today.get(Calendar.YEAR)
+            year = today.get(Calendar.YEAR)
             val month: Int = today.get(Calendar.MONTH)
             val date: Int = today.get(Calendar.DATE)
             val dlg = DatePickerDialog(this, object : DatePickerDialog.OnDateSetListener {
@@ -34,5 +36,6 @@ class MainActivity : AppCompatActivity() {
             }, year, month, date)
             dlg.show()
         }
+        text.text="${year}"
     }
 }
