@@ -1,42 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/text"
+    <ToggleButton
+        android:id="@+id/onetimeAlarmToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textOff="onetime alarm off"
+        android:textOn="onetime alarm on" />
 
-    <Button
-        android:id="@+id/btn1"
+    <ToggleButton
+        android:id="@+id/periodicAlarmToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707"
-        tools:text="Date" />
+        android:textOff="periodic alarm off"
+        android:textOn="periodic alarm on" />
 
-    <EditText
-        android:id="@+id/editTextDate"
+    <ToggleButton
+        android:id="@+id/exactPeriodicAlarmToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="167dp" />
+        android:textOff="exact periodic alarm off"
+        android:textOn="exact periodic alarm on" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ToggleButton
+        android:id="@+id/realtimePeriodicAlarmToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="realtime periodic alarm off"
+        android:textOn="realtime periodic alarm on" />
+
+</LinearLayout>
