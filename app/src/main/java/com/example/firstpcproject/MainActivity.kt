@@ -1,16 +1,17 @@
 package com.example.firstpcproject
 
 import android.app.AlarmManager
+import android.app.DatePickerDialog
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
+import android.widget.*
 import android.widget.CompoundButton.OnCheckedChangeListener
-import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+import org.w3c.dom.Text
 import java.util.*
 
 
@@ -107,7 +108,22 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, toastMessage)
             Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
         })
+        val button:Button=findViewById(R.id.button2)
+        val text:TextView=findViewById(R.id.text1)
+        /*button.setOnClickListener{
+            text.text = "현자타임."
+        }*/
+        var year:Int=0
 
+            var today =Calendar.getInstance()
+            year = today.get(Calendar.YEAR)
+            var month: Int = today.get(Calendar.MONTH)
+            var date: Int = today.get(Calendar.DATE)
+        button.setOnClickListener {
+            val dlg = DatePickerDialog(this,
+                { view, year, month, dayOfMonth -> text.text = "${Calendar.getInstance().timeInMillis}일" }, year, month, date)
+            dlg.show()
+        }
     }
 
 }
