@@ -31,88 +31,8 @@ class MainActivity : AppCompatActivity() {
             this, AlarmReceiver.NOTIFICATION_ID, intent,
             PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val onetimeAlarmToggle:ToggleButton=findViewById(R.id.onetimeAlarmToggle)
-        onetimeAlarmToggle.setOnCheckedChangeListener(OnCheckedChangeListener { _, isChecked ->
-            val toastMessage = if (isChecked) {
-                val triggerTime = (SystemClock.elapsedRealtime()
-                        + 60 * 1000)
-                alarmManager.set(
-                    AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    triggerTime,
-                    pendingIntent
-                )
-                "Onetime Alarm On"
-            } else {
-                alarmManager.cancel(pendingIntent)
-                "Onetime Alarm Off"
-            }
-            Log.d(TAG, toastMessage)
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-        })
-
-        val periodicAlarmToggle:ToggleButton=findViewById(R.id.periodicAlarmToggle)
-        periodicAlarmToggle.setOnCheckedChangeListener(OnCheckedChangeListener { _, isChecked ->
-            val toastMessage: String = if (isChecked) {
-                val repeatInterval: Long = AlarmManager.INTERVAL_FIFTEEN_MINUTES
-                val triggerTime = (SystemClock.elapsedRealtime()
-                        + repeatInterval)
-                alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    triggerTime, repeatInterval,
-                    pendingIntent)
-                "Periodic Alarm On"
-            } else {
-                alarmManager.cancel(pendingIntent)
-                "Periodic Alarm Off"
-            }
-            Log.d(TAG, toastMessage)
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-        })
-
-        val exactPeriodicAlarmToggle:ToggleButton=findViewById(R.id.exactPeriodicAlarmToggle)
-        exactPeriodicAlarmToggle.setOnCheckedChangeListener(OnCheckedChangeListener { _, isChecked ->
-            val toastMessage: String = if (isChecked) {
-                val repeatInterval: Long = 60*1000
-                val triggerTime = (SystemClock.elapsedRealtime()
-                        + repeatInterval)
-                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    triggerTime, repeatInterval,
-                    pendingIntent)
-                "Exact periodic Alarm On"
-            } else {
-                alarmManager.cancel(pendingIntent)
-                "Exact periodic Alarm Off"
-            }
-            Log.d(TAG, toastMessage)
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-        })
-
-        val realtimePeriodicAlarmToggle:ToggleButton=findViewById(R.id.realtimePeriodicAlarmToggle)
-        realtimePeriodicAlarmToggle.setOnCheckedChangeListener(OnCheckedChangeListener { _, isChecked ->
-            val toastMessage: String = if (isChecked) {
-                val repeatInterval: Long = 15 * 60 * 1000 // 15min
-                val calendar: Calendar = Calendar.getInstance().apply {
-                    timeInMillis = System.currentTimeMillis()
-                    set(Calendar.HOUR_OF_DAY, 20)
-                    set(Calendar.MINUTE, 25)
-                }
-
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-                    calendar.timeInMillis,
-                    repeatInterval,
-                    pendingIntent)
-                "Realtime periodic Alarm On"
-            } else {
-                alarmManager.cancel(pendingIntent)
-                "Realtime periodic Alarm Off"
-            }
-            Log.d(TAG, toastMessage)
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-        })
         val button:Button=findViewById(R.id.button2)
         val text:TextView=findViewById(R.id.text1)
-        /*button.setOnClickListener{
-            text.text = "현자타임."
-        }*/
         var year:Int=0
 
             var today =Calendar.getInstance()
@@ -123,6 +43,13 @@ class MainActivity : AppCompatActivity() {
             val dlg = DatePickerDialog(this,
                 { view, year, month, dayOfMonth -> text.text = "${Calendar.getInstance().timeInMillis}일" }, year, month, date)
             dlg.show()
+            today.set(Calendar.MONTH,month+6)
+            val time1=today.timeInMillis
+            alarmManager.set(
+                AlarmManager.RTC,
+                time1,
+                pendingIntent
+            )
         }
     }
 
