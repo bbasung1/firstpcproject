@@ -9,15 +9,31 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="50dp"
+        android:layout_width="213dp"
         android:layout_height="102dp"
         android:layout_weight="1"
-        android:text="Button" />
+        android:text="와이퍼" />
 
     <TextView
         android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/recentkmdsic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="this is for test" />
+
+    <EditText
+        android:id="@+id/recentkm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="test" />
 
 </LinearLayout>

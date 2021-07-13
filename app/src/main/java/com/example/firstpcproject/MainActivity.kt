@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.*
 import android.widget.CompoundButton.OnCheckedChangeListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import org.w3c.dom.Text
 import java.util.*
 
@@ -50,6 +51,13 @@ class MainActivity : AppCompatActivity() {
                 time1,
                 pendingIntent
             )
+        }
+        val recentkmrecive:EditText=findViewById(R.id.recentkm)
+        val recentkmoutput:TextView=findViewById(R.id.recentkmdsic)
+        var rkm=0
+        recentkmrecive.doAfterTextChanged {
+            recentkmoutput.text=recentkmrecive.text
+            rkm=Integer.parseInt(recentkmrecive.text.toString())
         }
     }
 
